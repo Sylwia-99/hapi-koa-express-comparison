@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Visual Studio cache directory
+.vs/
+
+#node-modules
+express-app/node-modules
+hapi-app/node-modules
+koa-app/node-modules
