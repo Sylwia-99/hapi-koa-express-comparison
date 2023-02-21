@@ -107,6 +107,6 @@ dist
 .vs/
 
 #node-modules
-express-app/node-modules
-hapi-app/node-modules
-koa-app/node-modules
+express-app/node-modules/
+hapi-app/node-modules/
+koa-app/node-modules/
