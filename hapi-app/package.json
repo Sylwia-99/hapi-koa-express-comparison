@@ -9,6 +9,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@hapi/hapi": "^21.3.0"
+    "@hapi/hapi": "^21.3.0",
+    "mysql2": "^3.1.2",
+    "sequelize": "^6.28.0"
   }
 }

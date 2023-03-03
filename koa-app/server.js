@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const app = new Koa();
+const port = process.env.PORT || 5000; 
 
 // logger
 
@@ -9,8 +10,8 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${rt}`);
 });
 
-// x-response-time
 
+// x-response-time
 app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
@@ -18,10 +19,11 @@ app.use(async (ctx, next) => {
   ctx.set('X-Response-Time', `${ms}ms`);
 });
 
-// response
 
-app.use(async ctx => {
-  ctx.body = 'Hello World';
-});
+// // response
+// app.use(async ctx => {            
+//   ctx.body = 'Hello World';
+// });
 
-app.listen(5000);
+app.listen(port);
+require('./routes/test.routes')(app);
