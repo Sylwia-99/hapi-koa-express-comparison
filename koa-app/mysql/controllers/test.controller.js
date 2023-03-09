@@ -1,4 +1,4 @@
-const db = require('../../dbconfig/index');
+const db = require('../../../dbconfig/mysql-index');
 const uuid = require('uuid')
 const User = db.User;
 

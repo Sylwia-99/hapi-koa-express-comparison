@@ -2,7 +2,7 @@ const Express = require('express')
 const cors = require('cors');
 const server = Express()
 
-var corsOptions = {
+let corsOptions = {
   origin: 'http://localhost:4200'
 }
 
@@ -10,8 +10,7 @@ server.use(cors(corsOptions));
 server.use(Express.json());
 server.use(Express.urlencoded({ extended: true }));
 
-
-require('./routes/test.routes')(server);
+require('../nosql/routes/test.routes')(server);
 
 const port = process.env.PORT || 4000; 
 

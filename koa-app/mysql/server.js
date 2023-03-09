@@ -19,11 +19,5 @@ app.use(async (ctx, next) => {
   ctx.set('X-Response-Time', `${ms}ms`);
 });
 
-
-// // response
-// app.use(async ctx => {            
-//   ctx.body = 'Hello World';
-// });
-
 app.listen(port);
 require('./routes/test.routes')(app);

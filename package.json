@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "mongoose": "^7.0.1",
     "mysql2": "^3.1.2",
     "sequelize": "^6.28.0",
     "uuid": "^9.0.0"
