@@ -1,5 +1,4 @@
 const db = require('../../../dbconfig/nosql-index');
-const uuid = require('uuid')
 const User = db.User;
 const Boom = require('@hapi/boom')
 
@@ -37,7 +36,6 @@ exports.get = async (req, res) => {
   const id = req.params.id;
   return User.findById(id)
     .then(data => {
-      console.log(data)
       if (data !==null) {
         return data ;
       } else {

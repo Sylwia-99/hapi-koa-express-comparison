@@ -1,23 +1,18 @@
+const render = require('koa-ejs');
+const static =  require('koa-static');
+const path = require('path');
 const Koa = require('koa');
 const app = new Koa();
-const port = process.env.PORT || 5000; 
+const port = process.env.PORT || 3000; 
 
-// logger
+render(app, {
+  root: path.join(__dirname, 'views'),
+  layout: 'index',
+  viewExt: 'ejs',
+})
 
-app.use(async (ctx, next) => {
-  await next();
-  const rt = ctx.response.get('X-Response-Time');
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
-});
-
-
-// x-response-time
-app.use(async (ctx, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.set('X-Response-Time', `${ms}ms`);
-});
+// load assets
+app.use(static(path.join(__dirname, "../../assets")))
 
 app.listen(port);
 require('./routes/test.routes')(app);
