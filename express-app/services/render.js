@@ -3,24 +3,23 @@ const axios = require('axios');
 
 
 exports.homeRoutes =  async (req, res) => {
-    // Make a get request to /api/users
-    axios.get('http://localhost:3000/api/users')
+    axios.get('http://localhost:3000/api/tickets')
         .then(function(response){
-            res.render('index', { users : response.data });
+            res.render('index', { tickets : response.data });
         })
         .catch(err =>{
             res.send(err);
         })
 }
 
-exports.add_user = (req, res) =>{
-    res.render('add_user');
+exports.add_ticket = (req, res) =>{
+    res.render('add_ticket');
 }
 
-exports.update_user = (req, res) =>{
-    axios.get(`http://localhost:3000/api/users/${req.query.id}`)
-        .then(function(userdata){
-            res.render("update_user", { user : userdata.data})
+exports.update_ticket = (req, res) =>{
+    axios.get(`http://localhost:3000/api/tickets/${req.query.id}`)
+        .then(function(ticketdata){
+            res.render("update_ticket", { ticket : ticketdata.data})
         })
         .catch(err =>{
             res.send(err);
