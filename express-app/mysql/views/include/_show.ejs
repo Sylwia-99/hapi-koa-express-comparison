@@ -7,16 +7,16 @@
         <td><%= tickets[i].total_fare %></td>
         <td><%= tickets[i].search_date %></td>
         <td><%= tickets[i].seat_remaining %></td>
-        <td><%= tickets[i].Flight.FlightDetail.flight_date %></td>
-        <td><%= tickets[i].Flight.FlightDetail.travel_duration %></td>
-        <td><%= tickets[i].Flight.FlightDetail.is_non_stop %></td>
+        <td><%= tickets[i].Flight.FlightDetails[0].flight_date %></td>
+        <td><%= tickets[i].Flight.FlightDetails[0].travel_duration %></td>
+        <td><%= tickets[i].Flight.FlightDetails[0].is_non_stop %></td>
         <td><%= tickets[i].Flight.starting_airport.flight_name %></td>
         <td><%= tickets[i].Flight.destination_airport.flight_name %></td>
         <td><%= tickets[i].Flight.Plane.segments_equipment_description %></td>
         <td><%= tickets[i].Flight.Plane.Airline.segments_airline_name %></td>
         <td><%= tickets[i].Flight.Plane.Airline.segments_airline_code %></td>
 
-        <td>
+        <td id="buttons">
             <a href="/update-ticket?id=<%= tickets[i].ticket_id %>" class="btn border-shadow update">
                 <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
             </a>

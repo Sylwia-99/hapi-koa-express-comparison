@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = (sequelize, Sequelize) => {
     const Ticket = sequelize.define("Ticket", {
         ticket_id: {
@@ -25,7 +27,10 @@ module.exports = (sequelize, Sequelize) => {
         },
         search_date: {
             type: Sequelize.DATE,          
-            allowNull: false
+            allowNull: false,
+            get() {
+                return moment(this.getDataValue('search_date')).format('YYYY-MM-DD');
+            }
         },
         seat_remaining: {
             type: Sequelize.INTEGER,          

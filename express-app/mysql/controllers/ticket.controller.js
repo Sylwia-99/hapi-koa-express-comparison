@@ -62,7 +62,7 @@ exports.create = async (req, res) => {
 
     await Ticket.create(ticket)
       .then(data => {
-        res.send(data);
+        res.send({message: "Ticket was created successfully."});
       })
   }
   catch(err) {
@@ -73,22 +73,22 @@ exports.create = async (req, res) => {
       };
 };
 
+
 // Find All 
 exports.getAll = async (req, res) => {
   try {
     const tickets = await Ticket.findAll({
-      distinct: 'ticket_id',
       attributes: [
-          'ticket_id',
-          'is_basic_economy',
-          'is_refundable',
-          'base_fare',
-          'total_fare',
-          'search_date',
-          'seat_remaining',
-      ],
+        'ticket_id',
+        'is_basic_economy',
+        'is_refundable',
+        'base_fare',
+        'total_fare',
+        'search_date',
+        'seat_remaining',
+      ], 
       include: [
-        {
+        {        
         model: Flight,
         include: [
           { 
@@ -128,9 +128,9 @@ exports.getAll = async (req, res) => {
             ],
             as: 'destination_airport'
           }
-      ]    
+      ],   
       }
-    ]
+    ],
     })
     tickets ? res.send(tickets) : res.status(404).send({
       message: `Cannot find Tickets.`
@@ -148,31 +148,62 @@ exports.getAll = async (req, res) => {
 exports.get = async(req, res) => {
   const id = req.params.id;
   try {
-    const ticket = await Ticket.findByPk(id);
-    const flight = await Flight.findByPk(ticket.flight_id);
-    const flightDetails = await FlightDetails.findOne({ where: { fk_flight_id: ticket.flight_id } });
-    const plane = await Plane.findByPk(flight.plane_id);
-    const starting_airport = await Airport.findByPk(flight.starting_airport_id);
-    const destination_airport = await Airport.findByPk(flight.destination_airport_id);
-    const airline = await Airline.findByPk(plane.airline_id);
-
-    const ticketToDisplay = {
-      segments_airline_name: airline.segments_airline_name,
-      segments_airline_code: airline.segments_airline_code,
-      segments_equipment_description: plane.segments_equipment_description,
-      starting_airport: starting_airport.flight_name,
-      destination_airport: destination_airport.flight_name,    
-      flight_date: flightDetails.flight_date,
-      travel_duration: flightDetails.travel_duration,
-      is_non_stop: flightDetails.is_non_stop,
-      is_basic_economy: ticket.is_basic_economy ,
-      is_refundable: ticket.is_refundable,
-      base_fare: ticket.base_fare,
-      total_fare:  ticket.total_fare,
-      search_date: ticket.search_date,
-      seat_remaining : ticket.seat_remaining
-    }
-    ticketToDisplay ? res.send(ticketToDisplay) : res.status(404).send({
+    const ticket = await Ticket.findOne({
+      where: { ticket_id: id },
+      attributes: [
+        'ticket_id',
+        'is_basic_economy',
+        'is_refundable',
+        'base_fare',
+        'total_fare',
+        'search_date',
+        'seat_remaining',
+      ], 
+      include: [{
+        model: Flight,
+        include: [
+          { 
+            model: FlightDetails, 
+            attributes: [          
+              'flight_date',
+              'travel_duration', 
+              'is_non_stop'
+            ],
+          }, 
+          {
+            model: Plane,
+            attributes: [
+              'segments_equipment_description',
+            ],
+            include: [
+              {
+                model: Airline,
+                attributes: [
+                  'segments_airline_name',
+                  'segments_airline_code', 
+                ],
+              }
+            ],
+          },
+          {
+            model: Airport, 
+            attributes: [
+              'flight_name',
+            ],
+            as: 'starting_airport',
+          },
+          {
+            model: Airport, 
+            attributes: [
+              'flight_name',
+            ],
+            as: 'destination_airport'
+          }
+      ]    
+      }]
+    })
+    
+    ticket ? res.send(ticket) : res.status(404).send({
       message: `Cannot find Ticket with id=${id}.`
     })
   }

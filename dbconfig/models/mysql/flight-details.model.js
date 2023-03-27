@@ -1,8 +1,13 @@
+const moment = require('moment');
+
 module.exports = (sequelize, Sequelize) => {
     const FlightDetails = sequelize.define("FlightDetails", {
         flight_date: {
             type: Sequelize.DATE,          
-            allowNull: false
+            allowNull: false,
+            get() {
+                return moment(this.getDataValue('flight_date')).format('YYYY-MM-DD');
+            }
         },
         travel_duration: {
             type: Sequelize.TIME,          

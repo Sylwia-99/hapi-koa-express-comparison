@@ -85,18 +85,22 @@ async function initialize() {
             onDelete: 'CASCADE'        
         })
 
-        db.Flight.hasOne(db.FlightDetails, {
+        db.Flight.hasMany(db.FlightDetails, {
             foreignKey: {  
                 name: 'fk_flight_id',    
                 allowNull: false 
-        }, onDelete: 'CASCADE'        
+            }, 
+            targetKey: 'flight_id',
+            onDelete: 'CASCADE'        
         })
 
         db.FlightDetails.belongsTo(db.Flight, {
             foreignKey: {  
                 name: 'fk_flight_id',    
                 allowNull: false 
-        }, onDelete: 'CASCADE'        
+            }, 
+            sourceKey: 'flight_id',
+            onDelete: 'CASCADE'        
         })
 
         db.Ticket.hasOne(db.Flight, {
