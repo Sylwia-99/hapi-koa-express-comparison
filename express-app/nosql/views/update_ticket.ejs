@@ -1,0 +1,107 @@
+<%- include('include/_header') %>
+
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/"><i class="fas fa-angle-double-left"></i> All Tickets</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Update Ticket</h2>
+            <span class="text-light">Use the below form to Update an ticket</span>
+        </div>
+
+        <!-- update ticket form -->
+         <!-- form handling -->
+ <form method="POST" id="update_ticket">
+    <div class="new_ticket">
+        <div class="form-group">
+            <label for="segments_airline_name" class="text-light">Segments Airline Name</label>
+            <input type="hidden" name="ticket_id" value="<%= ticket._id %>">
+            <input type="text" name="segments_airline_name" value="<%= ticket.flight.plane.airline.segments_airline_name %>">
+        </div>
+        <div class="form-group">
+            <label for="segments_airline_code" class="text-light">Segments Airline Code</label>
+            <input type="text" name="segments_airline_code" value="<%= ticket.flight.plane.airline.segments_airline_code %>">
+        </div>
+        <div class="form-group">
+            <label for="segments_equipment_description" class="text-light">Segments Equipment Description</label>
+            <input type="text" name="segments_equipment_description" value="<%= ticket.flight.plane.segments_equipment_description  %>">
+        </div>
+        <div class="form-group">
+            <label for="starting_airport" class="text-light">Starting Airport</label>
+            <input type="text" name="starting_airport"value="<%= ticket.flight.starting_airport.flight_name %>">
+        </div>
+        <div class="form-group">
+            <label for="destination_airport" class="text-light">Destination Airport</label>
+            <input type="text" name="destination_airport" value="<%= ticket.flight.destination_airport.flight_name %>">
+        </div>
+        <div class="form-group">
+            <label for="flight_date" class="text-light">Flight Date</label>
+            <input type="date" name="flight_date"  value="<%= ticket.flight.flight_details.flight_date %>">
+        </div>
+        <div class="form-group">
+            <label for="travel_duration" class="text-light">Travel Duration</label>
+            <input type="time" name="travel_duration" value="<%= ticket.flight.flight_details.travel_duration %>">
+        </div>
+
+        <div class="form-group">
+            <label for="is_non_stop" class="text-light">Is Non Stop?</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-2" name="is_non_stop" value="1" <%= ticket.flight.flight_details.is_non_stop == 1 ? 'checked' : '' %>>
+                <label for="radio-2" class="radio-label">Yes</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-3" name="is_non_stop" value="0"  <%= ticket.flight.flight_details.is_non_stop == 0 ? 'checked' : '' %> >
+                <label for="radio-3" class="radio-label">No</label>
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="is_basic_economy" class="text-light">Is Basic Eeconomy?</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-4" name="is_basic_economy" value="1" <%= ticket.is_basic_economy == 1 ? 'checked' : '' %>>
+                <label for="radio-4" class="radio-label">Yes</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-5" name="is_basic_economy" value="0"  <%= ticket.is_basic_economy == 0 ? 'checked' : '' %> >
+                <label for="radio-5" class="radio-label">No</label>
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="is_refundable" class="text-light">Is Refundable?</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-6" name="is_refundable" value="1" <%= ticket.is_refundable == 1 ? 'checked' : '' %>>
+                <label for="radio-6" class="radio-label">Yes</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-7" name="is_refundable" value="0"  <%= ticket.is_refundable == 0 ? 'checked' : '' %> >
+                <label for="radio-7" class="radio-label">No</label>
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="base_fare" class="text-light">Base Fare</label>
+            <input type="number" step="0.01"  name="base_fare" value="<%= ticket.base_fare %>">
+        </div>
+        <div class="form-group">
+            <label for="total_fare" class="text-light">Total Fare</label>
+            <input type="number" step="0.01" name="total_fare" value="<%= ticket.total_fare %>">
+        </div>
+        <div class="form-group">
+            <label for="search_date" class="text-light">Search Date</label>
+            <input type="date" name="search_date"  value="<%= ticket.search_date %>">
+        </div>
+        <div class="form-group">
+            <label for="seat_remaining" class="text-light">Seat Remaining</label>
+            <input type="number" name="seat_remaining"  value="<%= ticket.seat_remaining %>">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+    </div>
+</form>
+       
+    </div>
+</main>
+
+<%- include('include/_footer') %>

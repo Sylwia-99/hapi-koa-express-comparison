@@ -1,5 +1,5 @@
 const axios = require('axios');
-// const { render } = require('ejs');
+const { render } = require('ejs');
 
 
 exports.homeRoutes =  async (req, res) => {

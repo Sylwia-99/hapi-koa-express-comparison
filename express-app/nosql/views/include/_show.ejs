@@ -1,13 +1,26 @@
-<% for(var i = 0; i < users.length; i++) { %>
+<% for(var i = 0; i < tickets.length; i++) { %>
     <tr>
         <td><%= i + 1 %></td>
-        <td><%= users[i].name %></td>
-        <td><%= users[i].surname %></td>
-        <td>
-            <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update">
+        <td><%= tickets[i].is_basic_economy %></td>
+        <td><%= tickets[i].is_refundable %></td>
+        <td><%= tickets[i].base_fare %></td>
+        <td><%= tickets[i].total_fare %></td>
+        <td><%= tickets[i].search_date %></td>
+        <td><%= tickets[i].seat_remaining %></td>
+        <td><%= tickets[i].flight.flight_details.flight_date %></td>
+        <td><%= tickets[i].flight.flight_details.travel_duration %></td>
+        <td><%= tickets[i].flight.flight_details.is_non_stop %></td>
+        <td><%= tickets[i].flight.starting_airport.flight_name %></td>
+        <td><%= tickets[i].flight.destination_airport.flight_name %></td>
+        <td><%= tickets[i].flight.plane.segments_equipment_description %></td>
+        <td><%= tickets[i].flight.plane.airline.segments_airline_name %></td>
+        <td><%= tickets[i].flight.plane.airline.segments_airline_code %></td>
+
+        <td id="buttons">
+            <a href="/update-ticket?id=<%= tickets[i]._id %>" class="btn border-shadow update">
                 <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
             </a>
-            <a class="btn border-shadow delete" data-id=<%= users[i]._id %> >
+            <a class="btn border-shadow delete" data-id=<%= tickets[i]._id %> >
                 <span class="text-gradient"><i class="fas fa-times"></i></span>
             </a>
         </td>

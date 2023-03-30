@@ -1,6 +1,6 @@
 const nosqlDbConfig = require('./nosql-db.config.js');
 const mongoose =  require("mongoose");
-
+const insertData =  require('./insert-nosql-data.service.js');
 module.exports = db = {};
 
 async function initialize() {
@@ -14,5 +14,13 @@ async function initialize() {
         useUnifiedTopology: true
         });}
     db.User = require('./models/nosql/test.model')(mongoose);
+    db.Airline = require('./models/nosql/airline.model')(mongoose);
+    db.Airport = require('./models/nosql/airport.model')(mongoose);
+    db.Plane = require('./models/nosql/plane.model')(mongoose);
+    db.FlightDetails = require('./models/nosql/flight-details.model')(mongoose);
+    db.Flight = require('./models/nosql/flight.model')(mongoose);
+    db.Ticket = require('./models/nosql/ticket.model')(mongoose);
+    
+    insertData.insertData(db.Ticket)
 
 initialize();

@@ -2,7 +2,7 @@ module.exports = {
     HOST:  'localhost',
     USER: 'root',
     PASSWORD: 'admin',
-    DB:'test',
+    DB:'flight_prices',
     PORT: 27017,
     dialect: 'nosql', 
     pool: {
