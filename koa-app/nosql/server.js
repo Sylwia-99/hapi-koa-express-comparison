@@ -15,4 +15,4 @@ render(app, {
 app.use(static(path.join(__dirname, "../../assets")))
 
 app.listen(port);
-require('./routes/test.routes')(app);
+require('./routes/ticket.routes')(app);

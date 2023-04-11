@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             unique: true,
         },
-        flight_name: {
+        airport_name: {
             type: Sequelize.STRING,          
             allowNull: false
         },

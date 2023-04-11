@@ -1,16 +1,16 @@
 const axios = require('axios');
 
 exports.homeRoutes = async (request, h) => {
-    // Make a get request to /api/users
-    const response = await axios.get('http://localhost:3000/api/users')
-    return h.view("index", {users: response.data})
+    // Make a get request to /api/tickets
+    const response = await axios.get('http://localhost:3000/api/tickets')
+    return h.view("index", {tickets: response.data})
 }
 
-exports.add_user = async (request, h)  =>{
-    return h.view("add_user")
+exports.add_ticket = async (request, h)  =>{
+    return h.view("add_ticket")
 }
 
-exports.update_user = async (request, h) =>{
-    const response = await axios.get(`http://localhost:3000/api/users/${request.query.id}`)
-    return h.view("update_user", {user: response.data})
+exports.update_ticket = async (request, h) =>{
+    const response = await axios.get(`http://localhost:3000/api/tickets/${request.query.id}`)
+    return h.view("update_ticket", {ticket: response.data})
 }

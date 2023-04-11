@@ -1,4 +1,5 @@
 const mysqlDbConfig = require('./mysql-db.config.js');
+const insertData =  require('./insert-mysql-data.service.js');
 const {Sequelize} = require('sequelize');
 
 module.exports = db = {};
@@ -10,10 +11,12 @@ async function initialize() {
         mysqlDbConfig.PASSWORD, {
             host: mysqlDbConfig.HOST,
             dialect: mysqlDbConfig.dialect,
+            pool: mysqlDbConfig.pool,
             operationsAliases: false,
+            logging: false
         }
-        );
-        db.User = require('./models/mysql/test.model')(sequelize, Sequelize);
+    );
+
         db.Airline = require('./models/mysql/airline.model')(sequelize, Sequelize);
         db.Plane = require('./models/mysql/plane.model')(sequelize, Sequelize);
         db.Airport = require('./models/mysql/airport.model')(sequelize, Sequelize);
@@ -70,8 +73,7 @@ async function initialize() {
                 name: 'starting_airport_id', 
                 as: 'starting_airport_id',
                 allowNull: false 
-        },                 as: 'starting_airport',
-
+        },  as: 'starting_airport',
             onDelete: 'CASCADE'        
         })
  
@@ -80,8 +82,7 @@ async function initialize() {
                 name: 'destination_airport_id', 
                 as: 'destination_airport_id',
                 allowNull: false 
-        },                 as: 'destination_airport',
-
+        },  as: 'destination_airport',
             onDelete: 'CASCADE'        
         })
 
@@ -118,6 +119,8 @@ async function initialize() {
         })
         
         await sequelize.sync({ alter: true });
+        // insertData.insertData(db.Ticket, db.FlightDetails, db.Flight, db.Airport, db.Plane, db.Airline, sequelize)
+
 }
 
 initialize();

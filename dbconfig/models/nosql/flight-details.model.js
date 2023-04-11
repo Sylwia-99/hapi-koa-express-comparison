@@ -14,7 +14,6 @@ module.exports = (mongoose) => {
         travel_duration: {
             type: String,          
             allowNull: false
-            // time
         },
         is_non_stop: {
             type: Boolean,          

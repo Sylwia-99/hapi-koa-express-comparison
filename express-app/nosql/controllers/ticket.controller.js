@@ -51,7 +51,7 @@ exports.create = async (req, res) => {
 // Find All 
 exports.getAll = async (req, res) => {
   try {
-    const tickets = await Ticket.find({})
+    const tickets = await Ticket.find({}).limit(1000)
     tickets ? res.send(tickets) : res.status(404).send({
       message: `Cannot find Tickets.`
     })
@@ -115,7 +115,7 @@ exports.update = async (req, res) => {
     }
     
     const ticket = await Ticket.findOneAndUpdate( 
-      { _id: id },ticketToUpdate
+      { _id: id }, ticketToUpdate
     )
     ticket ? 
       res.send({message: "Ticket was updated successfully."}) 

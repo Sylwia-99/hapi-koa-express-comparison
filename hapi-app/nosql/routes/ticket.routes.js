@@ -1,4 +1,4 @@
-const userController = require('../controllers/test.controller');
+const ticketController = require('../controllers/ticket.controller');
 const services = require('../../services/render');
 
 module.exports = [ 
@@ -31,43 +31,43 @@ module.exports = [
     },
     {
         method: 'GET',
-        path:'/add-user',
+        path:'/add-ticket',
         handler: async (request, h) => {
-            return await services.add_user(request, h)
+            return await services.add_ticket(request, h)
         }
     },
     {
         method: 'GET',
-        path:'/update-user',
+        path:'/update-ticket',
         handler: async (request, h) => {
-            return await services.update_user(request, h)
+            return await services.update_ticket(request, h)
         }
     },
 
     //API
     {
         method: 'GET',
-        path: '/api/users',
-        handler: userController.getAll
+        path: '/api/tickets',
+        handler: ticketController.getAll
     },
     { 
         method: 'POST',
-        path: '/api/users',
-        handler:  userController.create
+        path: '/api/tickets',
+        handler:  ticketController.create
     },
     { 
         method: 'GET',
-        path:'/api/users/{id}',
-        handler:  userController.get
+        path:'/api/tickets/{id}',
+        handler:  ticketController.get
     },
     { 
         method: 'PUT',
-        path:'/api/users/{id}',
-        handler:  userController.update
+        path:'/api/tickets/{id}',
+        handler:  ticketController.update
     },
     { 
         method: 'DELETE',
-        path:'/api/users/{id}',
-        handler:  userController.delete
+        path:'/api/tickets/{id}',
+        handler:  ticketController.delete
     }
 ] 

@@ -22,7 +22,7 @@ const init = async () => {
         path: __dirname + '/views'      
     })
 
-    const Routes = require('./routes/test.routes');
+    const Routes = require('./routes/ticket.routes');
 
     server.route(
         Routes

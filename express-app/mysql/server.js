@@ -18,7 +18,7 @@ server.use('/css', Express.static(path.resolve(__dirname, "../../assets/css")))
 server.use('/img', Express.static(path.resolve(__dirname, "../../assets/img")))
 server.use('/js', Express.static(path.resolve(__dirname, "../../assets/js")))
 
-require('./routes/test.routes')(server);
+require('./routes/ticket.routes')(server);
 
 const port = process.env.PORT || 3000; 
 
