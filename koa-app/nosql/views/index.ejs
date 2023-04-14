@@ -1,30 +1,40 @@
-
-
 <%- include('include/_header') %>
-    <main id="site-main">
-        <div class="container">
-            <div class="box-nav d-flex justify-between">
-                <a href="/add-user" class="border-shadow">
-                    <span class="text-gradient">New User <i class="fas fa-user"></i></span>
-                </a>
-            </div>
+<main id="site-main">
+  <div class="container">
+    <div class="box-nav d-flex justify-between">
+      <a href="/add-ticket" class="border-shadow">
+        <span class="text-gradient">Ticket User <i class="fas fa-user"></i></span>
+      </a>
+    </div>
 
-            <form action="/" method="POST">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%- include('include/_show') %>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-    </main>
+    <form action="/" method="POST">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Is Basic Economy?</th>
+            <th>Is Refundable?</th>
+            <th>Base Fare</th>
+            <th>Total Fare</th>
+            <th>Search Date</th>
+            <th>Seat Remaining</th>
+            <th>Flight Date</th>
+            <th>Travel Duration</th>
+            <th>Is Non Stop?</th>
+            <th>Starting Airport</th>
+            <th>Destination Airport</th>
+            <th>Segments Equipment Description</th>
+            <th>Segments Airline Name</th>
+            <th>Segments Airline Code</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- include('include/_show') %>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</main>
 
 <%- include('include/_footer') %>

@@ -1,39 +1,30 @@
-'use strict';
-
-const Hapi = require('@hapi/hapi');
-const vision = require('@hapi/vision')
-const inert = require('@hapi/inert')
-const ejs = require('ejs');
+"use strict";
+const Hapi = require("@hapi/hapi");
+const vision = require("@hapi/vision");
+const inert = require("@hapi/inert");
+const ejs = require("ejs");
 
 const init = async () => {
-    const port = process.env.PORT || 3000; 
+  const port = process.env.PORT || 3000;
 
-    const server = Hapi.server({
-        port,
-        host: 'localhost',
-    });
+  const server = Hapi.server({
+    port,
+    host: "localhost",
+  });
 
-    await server.register([vision, inert]);
-    
-    server.views({
-        engines: {
-            ejs: ejs
-        },
-        path: __dirname + '/views'      
-    })
+  await server.register([vision, inert]);
 
-    const Routes = require('./routes/ticket.routes');
+  server.views({
+    engines: {
+      ejs: ejs,
+    },
+    path: __dirname + "/views",
+  });
 
-    server.route(
-        Routes
-    );
+  const Routes = require("./routes/ticket.routes");
 
-    await server.start();
+  server.route(Routes);
+
+  await server.start();
 };
-
-process.on('unhandledRejection', (err) => {
-    console.log(err);
-    process.exit(1);
-});
-
 init();

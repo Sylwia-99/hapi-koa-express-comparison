@@ -1,16 +1,16 @@
 module.exports = {
-    HOST:  'localhost',
-    USER: 'root',
-    PASSWORD: 'admin',
-    DB:'flight_prices',
-    PORT: 27017,
-    dialect: 'nosql', 
-    pool: {
+  HOST: "localhost",
+  USER: "root",
+  PASSWORD: "admin",
+  DB: "flight_prices",
+  PORT: 27017,
+  dialect: "nosql",
+  pool: {
     max: 5,
     min: 0,
     acquire: 30000,
-    idle: 10000
-    }
+    idle: 10000,
+  },
 };
 
 // Max - maximum number of connections that are permissible in a pool
