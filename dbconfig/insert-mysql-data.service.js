@@ -15,7 +15,6 @@ exports.insertData = async (
   Airline
 ) => {
   try {
-    const start = new Date();
     fs.createReadStream(
       "C:/Users/Dawid/Desktop/sylwia/Studia/PracaMagisterska/archive/itineraries.csv"
     )

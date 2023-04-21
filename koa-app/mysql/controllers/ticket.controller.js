@@ -72,7 +72,7 @@ exports.create = async (ctx, next, body) => {
 exports.getAll = async (ctx, next) => {
   try {
     const tickets = Ticket.findAll({
-      limit: 1000,
+      limit: 100,
       attributes: [
         "ticket_id",
         "is_basic_economy",

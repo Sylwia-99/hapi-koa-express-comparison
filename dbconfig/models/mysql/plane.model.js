@@ -1,5 +1,3 @@
-const airline = require("./airline.model");
-
 module.exports = (sequelize, Sequelize) => {
   const Plane = sequelize.define(
     "Plane",

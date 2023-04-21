@@ -1,7 +1,5 @@
-const moment = require("moment");
 const db = require("../../../dbconfig/nosql-index");
 const FlightSchema = db.Flight.FlightSchema;
-
 module.exports = (mongoose) => {
   const Schema = mongoose.Schema;
   const TicketSchema = new Schema(
@@ -45,7 +43,6 @@ module.exports = (mongoose) => {
     },
     { strict: false }
   );
-
   const Ticket = mongoose.model("Ticket", TicketSchema);
   return Ticket;
 };

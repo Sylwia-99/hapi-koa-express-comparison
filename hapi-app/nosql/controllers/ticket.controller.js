@@ -26,10 +26,10 @@ exports.create = async (req, res) => {
           },
         },
         starting_airport: {
-          flight_name: req.payload.starting_airport,
+          airport_name: req.payload.starting_airport,
         },
         destination_airport: {
-          flight_name: req.payload.destination_airport,
+          airport_name: req.payload.destination_airport,
         },
       },
     };
@@ -44,7 +44,7 @@ exports.create = async (req, res) => {
 // Find Single
 exports.getAll = async (req, res) => {
   try {
-    const tickets = await Ticket.find({}).limit(1000);
+    const tickets = await Ticket.find({}).limit(100);
     return tickets ? tickets : Boom.badRequest(`Cannot find Tickets.`);
   } catch (err) {
     throw Boom.badRequest(err.message);

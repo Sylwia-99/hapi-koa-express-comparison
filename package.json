@@ -7,6 +7,7 @@
     "eslint": "^8.7.0",
     "mongoose": "^7.0.1",
     "mysql2": "^3.1.2",
+    "perfy": "^1.1.5",
     "prettier": "^2.5.1",
     "sequelize": "^6.28.0",
     "uuid": "^9.0.0"

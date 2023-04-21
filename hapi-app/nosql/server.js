@@ -27,4 +27,5 @@ const init = async () => {
 
   await server.start();
 };
+
 init();

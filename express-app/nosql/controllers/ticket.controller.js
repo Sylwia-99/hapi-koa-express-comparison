@@ -25,10 +25,10 @@ exports.create = async (req, res) => {
           },
         },
         starting_airport: {
-          flight_name: req.body.starting_airport,
+          airport_name: req.body.starting_airport,
         },
         destination_airport: {
-          flight_name: req.body.destination_airport,
+          airport_name: req.body.destination_airport,
         },
       },
     };
@@ -47,7 +47,7 @@ exports.create = async (req, res) => {
 // Find All
 exports.getAll = async (req, res) => {
   try {
-    const tickets = await Ticket.find({}).limit(1000);
+    const tickets = await Ticket.find({}).limit(100);
     tickets
       ? res.send(tickets)
       : res.status(404).send({

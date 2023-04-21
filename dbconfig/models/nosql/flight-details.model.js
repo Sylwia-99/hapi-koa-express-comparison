@@ -1,8 +1,5 @@
-const moment = require("moment");
-
 module.exports = (mongoose) => {
   const Schema = mongoose.Schema;
-
   const FlightDetailsSchema = new Schema(
     {
       flight_date: {
@@ -28,8 +25,6 @@ module.exports = (mongoose) => {
     },
     { strict: false }
   );
-
   const FlightDetails = mongoose.model("FlightDetails", FlightDetailsSchema);
-
   return { FlightDetails, FlightDetailsSchema };
 };

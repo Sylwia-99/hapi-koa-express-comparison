@@ -43,7 +43,7 @@ exports.create = async (ctx, next, body) => {
 // Find Single
 exports.getAll = async (ctx, next) => {
   try {
-    const tickets = await Ticket.find().limit(1000);
+    const tickets = await Ticket.find().limit(100);
     return tickets
       ? (ctx.body = tickets)
       : ctx.throw(400, `Cannot find Tickets.`);

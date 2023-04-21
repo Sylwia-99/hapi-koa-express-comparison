@@ -17,8 +17,6 @@ module.exports = (mongoose) => {
     },
     { strict: false }
   );
-
   const Airline = mongoose.model("Airline", AirlineSchema);
-
   return { Airline, AirlineSchema };
 };

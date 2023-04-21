@@ -1,5 +1,4 @@
 const moment = require("moment");
-
 module.exports = (sequelize, Sequelize) => {
   const Ticket = sequelize.define(
     "Ticket",

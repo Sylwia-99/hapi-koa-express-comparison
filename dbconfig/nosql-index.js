@@ -21,6 +21,7 @@ async function initialize() {
     useUnifiedTopology: true,
   });
 }
+
 db.Airline = require("./models/nosql/airline.model")(mongoose);
 db.Airport = require("./models/nosql/airport.model")(mongoose);
 db.Plane = require("./models/nosql/plane.model")(mongoose);

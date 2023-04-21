@@ -1,6 +1,5 @@
 module.exports = (mongoose) => {
   const Schema = mongoose.Schema;
-
   const AirportSchema = new Schema(
     {
       airport_name: {
@@ -14,7 +13,6 @@ module.exports = (mongoose) => {
     },
     { strict: false }
   );
-
   const Airport = mongoose.model("Airport", AirportSchema);
   return { Airport, AirportSchema };
 };

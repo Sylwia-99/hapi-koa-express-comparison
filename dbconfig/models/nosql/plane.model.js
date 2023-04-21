@@ -1,6 +1,5 @@
 const db = require("../../../dbconfig/nosql-index");
 const AirlineSchema = db.Airline.AirlineSchema;
-
 module.exports = (mongoose) => {
   const Schema = mongoose.Schema;
   const PlaneSchema = new Schema(
@@ -20,8 +19,6 @@ module.exports = (mongoose) => {
     },
     { strict: false }
   );
-
   const Plane = mongoose.model("Plane", PlaneSchema);
-
   return { Plane, PlaneSchema };
 };
