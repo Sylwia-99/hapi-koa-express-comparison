@@ -75,7 +75,7 @@ exports.create = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     const tickets = await Ticket.findAll({
-      limit: 1000,
+      limit: 100,
       attributes: [
         "ticket_id",
         "is_basic_economy",
